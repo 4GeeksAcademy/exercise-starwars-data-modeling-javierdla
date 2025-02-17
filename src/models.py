@@ -38,7 +38,7 @@ class Vehicle(Base):
     id = Column(Integer, primary_key=True)
     type = Column(String(250))
     size = Column(Integer)
-    num_pasajeros = (Integer)
+    num_pasajeros = Column(Integer)
 
 class Favorites(Base):
     __tablename__ = 'favorites'
