@@ -16,6 +16,8 @@ class User(Base):
     lastname = Column(String(250))
     email = Column(String(250))
 
+    favorites = relationship('Favorites', backref='user', lazy=True)
+
 class Characters(Base):
     __tablename__ = 'characters'
 
@@ -25,12 +27,16 @@ class Characters(Base):
     planet_born_id = Column(Integer, ForeignKey('planet.id'))
     vehicle_fav_id = Column(Integer, ForeignKey('vehicle.id'))
 
+    favorites = relationship('Favorites', backref='characters', lazy=True)
+
 class Planet(Base):
     __tablename__ = 'planet'
 
     id = Column(Integer, primary_key=True)
     type = Column(String(250))
     size = Column(Integer)
+
+    favorites = relationship('Favorites', backref='planet', lazy=True)
     
 class Vehicle(Base):
     __tablename__ = 'vehicle'
@@ -39,6 +45,8 @@ class Vehicle(Base):
     type = Column(String(250))
     size = Column(Integer)
     num_pasajeros = Column(Integer)
+
+    favorites = relationship('Favorites', backref='vehicle', lazy=True)
 
 class Favorites(Base):
     __tablename__ = 'favorites'
